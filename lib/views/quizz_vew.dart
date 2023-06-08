@@ -15,16 +15,24 @@ class QuizzView extends StatefulWidget {
 
 class _QuizzViewState extends State<QuizzView> {
   final bool _isSelected = false;
-  QuestionAnswer questionAnswer = QuestionAnswer(
-    id: 1,
-    question:
-        "Qual é o nome do primeiro membro da tripulação dos Piratas do Chapéu de Palha a se juntar a Monkey D. Luffy?",
-    correctOption: 2,
-    answer: ['Roronoa Zoro', 'Nami', 'Usopp', 'Sanji'],
-  );
-
+  final List<QuestionAnswer> questionList = [
+    QuestionAnswer(
+        id: 1,
+        question:
+            "Qual é o nome do primeiro membro da tripulação dos Piratas do Chapéu de Palha a se juntar a Monkey D. Luffy?",
+        correctOption: 2,
+        answer: ['Roronoa Zoro', 'Nami', 'Usopp', 'Sanji']),
+    QuestionAnswer(
+      id: 2,
+      question: "Qual é a capital do Brasil?",
+      correctOption: 3,
+      answer: ['São Paulo', 'Rio de Janeiro', 'Brasília', 'Salvador'],
+    ),
+  ];
+  int currentQuestionIndex = 0;
   @override
   Widget build(BuildContext context) {
+    QuestionAnswer currentQuestion = questionList[currentQuestionIndex];
     return Scaffold(
       backgroundColor: Colors.blue[200],
       body: CustomPaint(
@@ -49,7 +57,7 @@ class _QuizzViewState extends State<QuizzView> {
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 child: Text(
-                  "QUESTÃO ${questionAnswer.id}/10",
+                  "QUESTÃO ${currentQuestion.id}/${questionList.length}",
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
@@ -57,17 +65,27 @@ class _QuizzViewState extends State<QuizzView> {
                 ),
               ),
               FixedSpacer.vNormal,
-              QuestionComponent(questionAnswer: questionAnswer),
+              SizedBox(
+                height: 120,
+                child: Align(
+                  alignment: Alignment.center,
+                  child: QuestionComponent(questionAnswer: currentQuestion),
+                ),
+              ),
               FixedSpacer.vNormal,
               AnswerComponent(
-                  id: 1, answers: questionAnswer, isSelected: _isSelected),
+                id: currentQuestion.id!,
+                answers: currentQuestion,
+                isSelected: _isSelected,
+              ),
               FixedSpacer.vBiggest,
-              FixedSpacer.vSmallest,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showNextQuestion();
+                    },
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: const [
@@ -95,5 +113,11 @@ class _QuizzViewState extends State<QuizzView> {
         ),
       ),
     );
+  }
+
+  void showNextQuestion() {
+    setState(() {
+      currentQuestionIndex++;
+    });
   }
 }
