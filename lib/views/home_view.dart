@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizz_gpt_app/views/quizz_vew.dart';
 import 'package:quizz_gpt_app/widgets/fixed_spacer.dart';
 import '../widgets/wave_shape.dart';
 
@@ -37,14 +38,22 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ),
                     FixedSpacer.vBiggest,
-                    const SizedBox(
-                      child: Text(
-                        "Bem-Vind@ ao Quizz de One Piece",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'OnePiece',
-                            fontSize: 28),
-                      ),
+                    RichText(
+                      text: const TextSpan(
+                          text: "Bem-Vind@ ao Quizz de ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              fontSize: 23),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: "One Piece",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'OnePiece',
+                                  fontSize: 28),
+                            )
+                          ]),
                     ),
                     FixedSpacer.vBiggest,
                     const SizedBox(
@@ -56,7 +65,14 @@ class _HomeViewState extends State<HomeView> {
                     ),
                     FixedSpacer.vBiggest,
                     ElevatedButton(
-                        onPressed: () {}, child: const Text("Vamos começar!"))
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const QuizzView()),
+                          );
+                        },
+                        child: const Text("Vamos começar!"))
                   ],
                 ),
               ),
