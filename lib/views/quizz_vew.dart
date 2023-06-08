@@ -17,7 +17,7 @@ class _QuizzViewState extends State<QuizzView> {
     return Scaffold(
       backgroundColor: Colors.blue[200],
       body: CustomPaint(
-        painter: WavePainter(),
+        painter: LeftHalfScreenPainter(),
         child: Padding(
           padding: const EdgeInsets.all(18),
           child: Column(

@@ -20,7 +20,7 @@ class _HomeViewState extends State<HomeView> {
             color: Colors.blue[200],
           ),
           CustomPaint(
-            painter: WavePainter(),
+            painter: FirstWave(),
             child: Padding(
               padding: const EdgeInsets.all(18),
               child: Center(
@@ -61,6 +61,8 @@ class _HomeViewState extends State<HomeView> {
                       child: Text(
                         "Bem-vind@ ao nosso aplicativo de perguntas e respostas sobre One Piece! \n Prepare-se para mergulhar no incrível mundo dos piratas, aventuras emocionantes e mistérios cativantes. \nEstamos aqui para ajudá-lo a explorar e aprofundar seu conhecimento sobre esse anime épico.\n Divirta-se e embarque nessa jornada inesquecível!",
                         textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 14),
                       ),
                     ),
                     FixedSpacer.vBiggest,
@@ -72,7 +74,10 @@ class _HomeViewState extends State<HomeView> {
                                 builder: (context) => const QuizzView()),
                           );
                         },
-                        child: const Text("Vamos começar!"))
+                        child: const Text(
+                          "Vamos começar!",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ))
                   ],
                 ),
               ),
