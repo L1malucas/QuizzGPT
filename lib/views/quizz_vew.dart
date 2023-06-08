@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:quizz_gpt_app/widgets/answer_component.dart';
 import 'package:quizz_gpt_app/widgets/fixed_spacer.dart';
+import 'package:quizz_gpt_app/widgets/question_component.dart';
 import 'package:quizz_gpt_app/widgets/wave_shape.dart';
+
+import '../models/question_answer_model.dart';
 
 class QuizzView extends StatefulWidget {
   const QuizzView({super.key});
@@ -12,12 +15,20 @@ class QuizzView extends StatefulWidget {
 
 class _QuizzViewState extends State<QuizzView> {
   final bool _isSelected = false;
+  QuestionAnswer questionAnswer = QuestionAnswer(
+    id: 1,
+    question:
+        "Qual é o nome do primeiro membro da tripulação dos Piratas do Chapéu de Palha a se juntar a Monkey D. Luffy?",
+    correctOption: 2,
+    answer: ['Roronoa Zoro', 'Nami', 'Usopp', 'Sanji'],
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[200],
       body: CustomPaint(
-        painter: LeftHalfScreenPainter(),
+        painter: SecondWave(),
         child: Padding(
           padding: const EdgeInsets.all(18),
           child: Column(
@@ -37,32 +48,19 @@ class _QuizzViewState extends State<QuizzView> {
                   color: Colors.blue,
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                child: const Text(
-                  "QUESTÃO X/Y",
+                child: Text(
+                  "QUESTÃO ${questionAnswer.id}/10",
                   textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               FixedSpacer.vNormal,
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.blue[300],
-                    borderRadius: BorderRadius.circular(4)),
-                padding: const EdgeInsets.all(8),
-                width: double.infinity,
-                child: const Text(
-                  "Qual é o nome do primeiro membro da tripulação dos Piratas do Chapéu de Palha a se juntar a Monkey D. Luffy?",
-                  textAlign: TextAlign.justify,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                ),
-              ),
+              QuestionComponent(questionAnswer: questionAnswer),
               FixedSpacer.vNormal,
-              AnswerComponent(title: "Roronoa Zoro", isSelected: _isSelected),
-              FixedSpacer.vSmallest,
-              AnswerComponent(title: "Nami", isSelected: _isSelected),
-              FixedSpacer.vSmallest,
-              AnswerComponent(title: "Usopp", isSelected: _isSelected),
-              FixedSpacer.vSmallest,
-              AnswerComponent(title: "Sanji", isSelected: _isSelected),
+              AnswerComponent(
+                  id: 1, answers: questionAnswer, isSelected: _isSelected),
               FixedSpacer.vBiggest,
               FixedSpacer.vSmallest,
               Row(
