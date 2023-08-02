@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quizz_gpt_app/views/quizz_vew.dart';
-import 'package:quizz_gpt_app/widgets/fixed_spacer.dart';
+import 'package:quizz_gpt_app/views/pages/quizz_page.dart';
+import 'package:quizz_gpt_app/views/widgets/fixed_spacer.dart';
 import '../widgets/wave_shape.dart';
 
 class HomeView extends StatefulWidget {

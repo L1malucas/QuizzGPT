@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:quizz_gpt_app/views/home_view.dart';
-import 'package:quizz_gpt_app/widgets/alert.dart';
-import 'package:quizz_gpt_app/widgets/answer_component.dart';
-import 'package:quizz_gpt_app/widgets/fixed_spacer.dart';
-import 'package:quizz_gpt_app/widgets/question_component.dart';
-import 'package:quizz_gpt_app/widgets/wave_shape.dart';
+import 'package:quizz_gpt_app/views/pages/home_page.dart';
+import 'package:quizz_gpt_app/views/widgets/alert.dart';
+import 'package:quizz_gpt_app/views/widgets/answer_component.dart';
+import 'package:quizz_gpt_app/views/widgets/fixed_spacer.dart';
+import 'package:quizz_gpt_app/views/widgets/wave_shape.dart';
 
-import '../models/question_answer_model.dart';
+import '../../models/q&a_model.dart';
+import '../widgets/question_component.dart';
 
 class QuizzView extends StatefulWidget {
   const QuizzView({super.key});
@@ -155,7 +155,6 @@ class _QuizzViewState extends State<QuizzView> {
                     width: double.infinity,
                   ),
                 ),
-                FixedSpacer.vSmallest,
                 Container(
                   width: 140,
                   decoration: BoxDecoration(
@@ -170,7 +169,6 @@ class _QuizzViewState extends State<QuizzView> {
                     ),
                   ),
                 ),
-                FixedSpacer.vNormal,
                 SizedBox(
                   height: 120,
                   child: Align(
@@ -178,7 +176,6 @@ class _QuizzViewState extends State<QuizzView> {
                     child: QuestionComponent(questionAnswer: currentQuestion),
                   ),
                 ),
-                FixedSpacer.vNormal,
                 AnswerComponent(
                   id: currentQuestion.id!,
                   answers: currentQuestion,
@@ -205,13 +202,12 @@ class _QuizzViewState extends State<QuizzView> {
                             type: AlertType.success,
                           ).show();
                         } else {
-                          print("$currentQuestionIndex ${questionList.length}");
                           showNextQuestion();
                         }
                       },
-                      child: Row(
+                      child: const Row(
                         mainAxisSize: MainAxisSize.min,
-                        children: const [
+                        children: [
                           Text('Próxima'),
                           SizedBox(
                             width: 5,
@@ -239,7 +235,7 @@ class _QuizzViewState extends State<QuizzView> {
       onWillPop: () async {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('Para voltar clique em sair'),
+            content: Text('Para voltar clique em \'Sair\''),
             backgroundColor: Colors.red,
           ),
         );
