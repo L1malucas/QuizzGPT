@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizz_gpt_app/views/pages/home_page.dart';
+import 'package:quizz_gpt_app/views/Pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());

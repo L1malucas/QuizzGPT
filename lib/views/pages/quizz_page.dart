@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:quizz_gpt_app/views/pages/home_page.dart';
+import 'package:quizz_gpt_app/views/Pages/home_page.dart';
 import 'package:quizz_gpt_app/views/widgets/alert.dart';
-import 'package:quizz_gpt_app/views/widgets/answer_component.dart';
 import 'package:quizz_gpt_app/views/widgets/fixed_spacer.dart';
 import 'package:quizz_gpt_app/views/widgets/wave_shape.dart';
 
-import '../../models/q&a_model.dart';
-import '../widgets/question_component.dart';
+import '../../Models/q&a_model.dart';
+import '../Components/answer_component.dart';
+import '../Components/question_component.dart';
 
 class QuizzView extends StatefulWidget {
   const QuizzView({super.key});
@@ -17,127 +17,11 @@ class QuizzView extends StatefulWidget {
 
 class _QuizzViewState extends State<QuizzView> {
   final bool _isSelected = false;
-  final List<QuestionAnswer> questionList = [
-    QuestionAnswer(
-      id: 1,
-      question:
-          "Qual é o nome do arqueólogo que acompanha os Piratas do Chapéu de Palha?",
-      correctOption: 1,
-      answer: [
-        "Roronoa Zoro",
-        "Nico Robin",
-        "Franky",
-        "Usopp",
-      ],
-    ),
-    QuestionAnswer(
-      id: 2,
-      question: "Qual é o nome do espadachim que possui três espadas?",
-      correctOption: 2,
-      answer: [
-        "Monkey D. Luffy",
-        "Sanji",
-        "Roronoa Zoro",
-        "Brook",
-      ],
-    ),
-    QuestionAnswer(
-      id: 3,
-      question:
-          "Qual é a fruta do diabo que permite que o usuário controle o fogo?",
-      correctOption: 2,
-      answer: [
-        "Bara Bara no Mi",
-        "Gomu Gomu no Mi",
-        "Mera Mera no Mi",
-        "Hie Hie no Mi",
-      ],
-    ),
-    QuestionAnswer(
-      id: 4,
-      question: "Qual é o nome do capitão dos Piratas do Coração?",
-      correctOption: 2,
-      answer: [
-        "Bepo",
-        "Killer",
-        "Trafalgar Law",
-        "Penguin",
-      ],
-    ),
-    QuestionAnswer(
-      id: 5,
-      question: "Qual é o nome da ilha onde nasceu Monkey D. Luffy?",
-      correctOption: 3,
-      answer: [
-        "Loguetown",
-        "Sabaody Archipelago",
-        "Water 7",
-        "Foosha Village",
-      ],
-    ),
-    QuestionAnswer(
-      id: 6,
-      question: "Qual é o nome do animal de estimação de Nami?",
-      correctOption: 1,
-      answer: [
-        "Panda",
-        "Gaivota",
-        "Renas",
-        "Gato",
-      ],
-    ),
-    QuestionAnswer(
-      id: 7,
-      question: "Qual é o nome da espada de Roronoa Zoro?",
-      correctOption: 0,
-      answer: [
-        "Wado Ichimonji",
-        "Shusui",
-        "Yubashiri",
-        "Santoryu",
-      ],
-    ),
-    QuestionAnswer(
-      id: 8,
-      question: "Qual é o nome do cozinheiro dos Piratas do Chapéu de Palha?",
-      correctOption: 1,
-      answer: [
-        "Nico Robin",
-        "Sanji",
-        "Franky",
-        "Chopper",
-      ],
-    ),
-    QuestionAnswer(
-      id: 9,
-      question:
-          "Qual é o nome da ilha em que o One Piece está supostamente escondido?",
-      correctOption: 3,
-      answer: [
-        "Skypiea",
-        "Wano",
-        "Alabasta",
-        "Laugh Tale",
-      ],
-    ),
-    QuestionAnswer(
-      id: 10,
-      question:
-          "Qual é o nome do primeiro navio dos Piratas do Chapéu de Palha?",
-      correctOption: 0,
-      answer: [
-        "Going Merry",
-        "Sunny Go",
-        "Thousand Sunny",
-        "Victory Hunter",
-      ],
-    ),
-  ];
-
   int currentQuestionIndex = 0;
   @override
   Widget build(BuildContext context) {
-    QuestionAnswer currentQuestion = questionList[currentQuestionIndex];
+  
+    // QuestionAnswer currentQuestion = questionList[currentQuestionIndex];
     return WillPopScope(
       child: Scaffold(
         backgroundColor: Colors.blue[200],
@@ -155,80 +39,83 @@ class _QuizzViewState extends State<QuizzView> {
                     width: double.infinity,
                   ),
                 ),
-                Container(
-                  width: 140,
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: Text(
-                    "QUESTÃO ${currentQuestion.id}/${questionList.length}",
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+                // Container(
+                //   width: 140,
+                //   decoration: BoxDecoration(
+                //     color: Colors.blue,
+                //     borderRadius: BorderRadius.circular(8.0),
+                //   ),
+                //   child: Text(
+                //     "QUESTÃO ${currentQuestion.id}/${questionList.length}",
+                //     textAlign: TextAlign.center,
+                //     style: const TextStyle(
+                //       fontWeight: FontWeight.bold,
+                //     ),
+                //   ),
+                // ),
                 SizedBox(
                   height: 120,
                   child: Align(
                     alignment: Alignment.center,
-                    child: QuestionComponent(questionAnswer: currentQuestion),
+                    child: QuestionComponent(questionAnswer: currentQuestionIndex),
                   ),
                 ),
                 AnswerComponent(
-                  id: currentQuestion.id!,
-                  answers: currentQuestion,
+                  id: currentQuestionIndex.id!,
+                  answers: currentQuestionIndex,
                   isSelected: _isSelected,
                 ),
                 FixedSpacer.vBiggest,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        if ((questionList.length - 1) == currentQuestionIndex) {
-                          print("$currentQuestionIndex ${questionList.length}");
-                          Alert(
-                            onConfirmPressed: () {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const HomeView()),
-                              );
-                            },
-                            context: context,
-                            message: "Você terminou o quizz.",
-                            type: AlertType.success,
-                          ).show();
-                        } else {
-                          showNextQuestion();
-                        }
-                      },
-                      child: const Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text('Próxima'),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Icon(
-                            Icons.forward,
-                            size: 24.0,
-                          ),
-                        ],
-                      ),
-                    ),
-                    ElevatedButton.icon(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(Icons.close),
-                        label: const Text("Sair"))
-                  ],
-                ),
               ],
             ),
+          ),
+        ),
+        bottomNavigationBar: Container(
+          padding: const EdgeInsets.all(16.0),
+          color: Colors.blue[800]!,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  if (currentQuestion.id! == 10) {
+                    Alert(
+                      onConfirmPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeView()),
+                        );
+                      },
+                      context: context,
+                      message: "Você terminou o quizz.",
+                      type: AlertType.success,
+                    ).show();
+                  } else {
+                    showNextQuestion();
+                  }
+                },
+                child: const Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text('Próxima'),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Icon(
+                      Icons.forward,
+                      size: 24.0,
+                    ),
+                  ],
+                ),
+              ),
+              ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(Icons.close),
+                  label: const Text("Sair"))
+            ],
           ),
         ),
       ),

@@ -1,18 +1,18 @@
 class QuestionAnswer {
   int? id;
   String? question;
-  int? correctOption;
+  int? correctAnswer;
   List<String>? answer;
 
   QuestionAnswer({
     required this.id,
     this.question,
-    this.correctOption,
+    this.correctAnswer,
     this.answer,
   });
 
   @override
   String toString() {
-    return ' QuestionAnswer(id: 1,answer: ["aaaa", "bbbb", "ccccc", "ddddd"],correctOption: 1,question: "ss")';
+    return 'QuestionAnswer(id: $id, question: $question, correctAnswer: $correctAnswer, answer: $answer)';
   }
 }

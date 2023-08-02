@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizz_gpt_app/models/q&a_model.dart';
+import 'package:quizz_gpt_app/Models/q&a_model.dart';
 
 class QuestionComponent extends StatelessWidget {
   final QuestionAnswer questionAnswer;

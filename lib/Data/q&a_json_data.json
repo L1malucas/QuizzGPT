@@ -1,0 +1,74 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "question": "Qual é o nome do arqueólogo que acompanha os Piratas do Chapéu de Palha?",
+      "correctAnswer": 1,
+      "answer": ["Roronoa Zoro", "Nico Robin", "Franky", "Usopp"]
+    },
+    {
+      "id": 2,
+      "question": "Qual é o nome do espadachim que possui três espadas?",
+      "correctAnswer": 2,
+      "answer": ["Monkey D. Luffy", "Sanji", "Roronoa Zoro", "Brook"]
+    },
+    {
+      "id": 3,
+      "question": "Qual é a fruta do diabo que permite que o usuário controle o fogo?",
+      "correctAnswer": 2,
+      "answer": [
+        "Bara Bara no Mi",
+        "Gomu Gomu no Mi",
+        "Mera Mera no Mi",
+        "Hie Hie no Mi"
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Qual é o nome do capitão dos Piratas do Coração?",
+      "correctAnswer": 2,
+      "answer": ["Bepo", "Killer", "Trafalgar Law", "Penguin"]
+    },
+    {
+      "id": 5,
+      "question": "Qual é o nome da ilha onde nasceu Monkey D. Luffy?",
+      "correctAnswer": 3,
+      "answer": [
+        "Loguetown",
+        "Sabaody Archipelago",
+        "Water 7",
+        "Foosha Village"
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Qual é o nome do animal de estimação de Nami?",
+      "correctAnswer": 1,
+      "answer": ["Panda", "Gaivota", "Renas", "Gato"]
+    },
+    {
+      "id": 7,
+      "question": "Qual é o nome da espada de Roronoa Zoro?",
+      "correctAnswer": 0,
+      "answer": ["Wado Ichimonji", "Shusui", "Yubashiri", "Santoryu"]
+    },
+    {
+      "id": 8,
+      "question": "Qual é o nome do cozinheiro dos Piratas do Chapéu de Palha?",
+      "correctAnswer": 1,
+      "answer": ["Nico Robin", "Sanji", "Franky", "Chopper"]
+    },
+    {
+      "id": 9,
+      "question": "Qual é o nome da ilha em que o One Piece está supostamente escondido?",
+      "correctAnswer": 3,
+      "answer": ["Skypiea", "Wano", "Alabasta", "Laugh Tale"]
+    },
+    {
+      "id": 10,
+      "question": "Qual é o nome do primeiro navio dos Piratas do Chapéu de Palha?",
+      "correctAnswer": 0,
+      "answer": ["Going Merry", "Sunny Go", "Thousand Sunny", "Victory Hunter"]
+    }
+  ]
+}
